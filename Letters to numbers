@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class PhoneNumberDecoder {
+    public static void main(String[] args) {
+        // Create a hashmap to store the phone number words and their corresponding digits
+        HashMap<String, String> phoneWords = new HashMap<>();
+        phoneWords.put("zero", "0");
+        phoneWords.put("one", "1");
+        phoneWords.put("two", "2");
+        phoneWords.put("three", "3");
+        phoneWords.put("four", "4");
+        phoneWords.put("five", "5");
+        phoneWords.put("six", "6");
+        phoneWords.put("seven", "7");
+        phoneWords.put("eight", "8");
+        phoneWords.put("nine", "9");
+
+        // Prompt the user to enter a phone number represented as words
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a phone number as words: ");
+        String phoneNumberWords = scanner.nextLine();
+        scanner.close();
+
+        // Split the input string into words and look up their corresponding digits in the hashmap
+        String[] words = phoneNumberWords.split("\\s+");
+        String phoneNumber = "";
+        for (String word : words) {
+            if (phoneWords.containsKey(word)) {
+                phoneNumber += phoneWords.get(word);
+            }
+        }
+
+        // Print the decoded phone number
+        System.out.println("Decoded phone number: " + phoneNumber);
+    }
+}
